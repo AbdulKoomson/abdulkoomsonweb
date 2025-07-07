@@ -1,4 +1,5 @@
 from flask import Flask, render_template, abort, current_app as app
+from flask import TemplateNotFound
 import os, re, json
 import logging
 from azure.monitor.opentelemetry import configure_azure_monitor
