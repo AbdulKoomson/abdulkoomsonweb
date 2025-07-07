@@ -20,15 +20,18 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 @app.route('/')
 def home():
     logger.info("Visited home page")
+    logger.info("Visited home page")
     return render_template('index.html')
 
 @app.route('/comments')
 def comments():
     logger.info("Visited comments page")
+    logger.info("Visited comments page")
     return render_template('comments.html')
 
 @app.route('/aboutme')
 def about_me():
+    logger.info("Visited aboutme page")
     logger.info("Visited aboutme page")
     return render_template('aboutme.html')
 
@@ -49,6 +52,7 @@ def post(slug):
 
 @app.route('/download')
 def download():
+    logger.info("Visited download page")
     logger.info("Visited download page")
     files = [
         {
@@ -71,9 +75,11 @@ def download():
 @app.route('/trends')
 def trends():
     logger.info("Visited trends page")
+    logger.info("Visited trends page")
     script_path = os.path.join(app.static_folder, 'js', 'blogData.js')
 
     if not os.path.exists(script_path):
+        logger.error("blogData.js not found")
         logger.error("blogData.js not found")
         return "blogData.js not found", 500
 
@@ -83,6 +89,7 @@ def trends():
     match = re.search(r'blogPosts\s*=\s*JSON\.parse\(\s*`(.*?)`\s*\);', js_content, re.DOTALL)
     if not match:
         logger.error("No blog post data found in blogData.js")
+        logger.error("No blog post data found in blogData.js")
         return "No blog post data found in blogData.js", 500
 
     json_string = match.group(1)
@@ -90,6 +97,7 @@ def trends():
     try:
         blog_posts = json.loads(json_string)
     except json.JSONDecodeError as e:
+        logger.exception("Error parsing blog post data")
         logger.exception("Error parsing blog post data")
         return f"Error parsing blog post data: {e}", 500
 
