@@ -80,7 +80,7 @@ export const blogPosts = JSON.parse(`[
     "author": "Abdul Koomson",
     "date": "June 27, 2025",
     "tags": ["About Me", "Data Science", "AI", "Full Stack", "Founder Journey"],
-    "readMoreLink": "/posts/aboutme",
-    "altStyle": true
+    "readMoreLink": "/aboutme",
+    "altStyle": false
   }
 ]`);
