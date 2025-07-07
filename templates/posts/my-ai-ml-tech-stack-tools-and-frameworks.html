@@ -1,0 +1,131 @@
+<div class="full-post">
+    <article>
+        <img src="/static/pictures/Azure diagram-2025-02-07-023321.png" alt="blog photo" class="blog-photo-mainpage"
+            onclick="openModal(this)" />
+
+        <h1>My Stack: Tools, Frameworks, and Python Packages I Use for AI and ML 💻</h1>
+
+        <p>
+            Building an AI startup in 2025 means making sharp choices with your tech stack. Every tool
+            and service needs to be lightweight, scalable, and developer-friendly—especially when you’re
+            running lean.
+        </p>
+        <p>
+            In this post, I'm breaking down my core ML stack, powered by
+            <strong>Azure Cloud Services</strong> and <strong>Mask R-CNN</strong> as my primary model
+            architecture.
+        </p>
+
+        <h2>☁️ Why Azure?</h2>
+        <p>
+            Azure offers a tightly integrated ecosystem for ML workflows—from data storage and
+            orchestration to model training, deployment, and inference. I chose Azure for its maturity,
+            support for Kubernetes, and integration with enterprise services like
+            <strong>Azure Active Directory</strong>, <strong>Key Vault</strong>, and
+            <strong>Azure DevOps</strong>.
+        </p>
+
+        <h2>🧠 Overview of My Stack</h2>
+        <ul>
+            <li><strong>Language:</strong> Python 3.11+</li>
+            <li><strong>Core ML Framework:</strong> PyTorch</li>
+            <li><strong>Main Model:</strong> Mask R-CNN (via Detectron2)</li>
+            <li><strong>Labeling Tools:</strong> Roboflow, CVAT</li>
+            <li><strong>Training Pipeline:</strong> Azure Databricks + Azure ML</li>
+            <li><strong>Storage:</strong> Azure Blob Storage, Azure Data Lake Gen2</li>
+            <li>
+                <strong>Model Serving:</strong> Azure Kubernetes Service (AKS) + Azure ML Model Registry
+            </li>
+            <li><strong>API Gateway:</strong> Azure API Management</li>
+            <li><strong>Trigger + Orchestration:</strong> Azure Functions, Logic Apps, Event Grid</li>
+            <li><strong>LLM Integration:</strong> Azure OpenAI + LangChain</li>
+            <li>
+                <strong>Reporting:</strong> Azure App Service, PDF via Azure Functions, Power BI
+                Dashboards
+            </li>
+        </ul>
+
+        <h2>🧱 Core Tools & Libraries</h2>
+        <ul>
+            <li><code>PyTorch</code> – base framework</li>
+            <li><code>Detectron2</code> – for Mask R-CNN and vision models</li>
+            <li><code>scikit-learn</code> – evaluation metrics</li>
+            <li><code>albumentations</code> – for image augmentations</li>
+            <li>
+                <code>torchvision</code>, <code>openCV</code>, <code>matplotlib</code>,
+                <code>pycocotools</code>
+            </li>
+        </ul>
+
+        <h2>📦 Azure-Specific Components</h2>
+
+        <h3>Azure Blob Storage + Data Lake</h3>
+        <p>
+            Used to store and organize both raw and preprocessed image data. Perfect for managing large
+            volumes of labeled datasets and experiment outputs.
+        </p>
+
+        <h3>Azure Databricks</h3>
+        <p>
+            I use this for Spark-based ETL and preprocessing, especially for preparing training datasets
+            at scale.
+        </p>
+
+        <h3>Azure Machine Learning & Model Registry</h3>
+        <p>
+            My training jobs and experiments run here. Once models are validated, they're registered and
+            deployed using AKS for scalable inference.
+        </p>
+
+        <h3>Azure Kubernetes Service + API Management</h3>
+        <p>
+            Trained models are containerized and served through AKS, exposed via a REST API, and managed
+            securely with Azure API Management.
+        </p>
+
+        <h3>Azure Functions + Logic Apps + Event Grid</h3>
+        <p>
+            These handle triggers, automation, and orchestration—such as post-inference workflows or LLM
+            Q&A invocations.
+        </p>
+
+        <h3>Azure OpenAI + LangChain</h3>
+        <p>
+            I integrate LLMs for post-classification reasoning, auto-report generation, and insights by
+            connecting LangChain with Azure OpenAI endpoints.
+        </p>
+
+        <h3>Reporting & Output</h3>
+        <p>
+            All generated content flows into Azure App Services (for UI), Power BI dashboards, or is
+            exported to PDFs via serverless Azure Functions.
+        </p>
+
+        <h2>💬 Final Thoughts</h2>
+        <p>
+            This stack reflects what I believe every AI founder should aim for: speed, modularity, and
+            production readiness.
+        </p>
+        <p>
+            No hype tools, no overkill infrastructure—just the right services to build, learn, and
+            iterate quickly in production-like environments.
+        </p>
+
+        <p>
+            <strong>Coming soon:</strong> A deep dive into how I annotate data for Mask R-CNN, and my
+            automated training loop using Azure ML pipelines.
+        </p>
+
+        <p>
+            Questions or want a code snippet? <a href="mailto:abdulkoomson@gmail.com">Let’s connect</a>.
+        </p>
+    </article>
+</div>
+
+<!-- Modal for enlarged image -->
+<div id="imgModal" class="img-modal" onclick="closeModal(event)">
+    <span class="close">&times;</span>
+    <div class="modal-image-wrapper">
+        <img class="modal-content" id="modalImage" />
+    </div>
+</div>

@@ -1,0 +1,115 @@
+<div class="full-post">
+    <article>
+        <img src="/static/pictures/ChatGPT Image Jun 25, 2025, 03_19_39 PM.png" alt="blog photo"
+            class="blog-photo-mainpage" onclick="openModal(this)" />
+        <h1>How I Built My Website with HTML, CSS, JS, Flask, and Azure Blob Storage 🌐</h1>
+
+        <p>
+            AbdulKoomson.com is the fifth website I've built—and easily the most functional. It started
+            as a basic static site but has grown into a Flask-powered platform with backend integration
+            using Azure Blob Storage to serve files and projects.
+        </p>
+
+        <h2>👨‍💻 My Web Development Journey</h2>
+        <p>
+            Several years ago, I took a beginner-friendly frontend development course. It taught me the
+            basics: structure with HTML, styling with CSS, and interactivity with JavaScript.
+        </p>
+        <p>
+            After that, I built two simple demo websites. Nothing fancy—just enough to grasp the core
+            concepts. Since then, I’ve built <strong>five websites</strong>. Two are currently live
+            (which I’ll share in an upcoming post), and my first live project went online about three
+            years ago.
+        </p>
+
+        <h2>🔧 Tech Stack Behind AbdulKoomson.com</h2>
+
+        <h3>Frontend – HTML, CSS & JavaScript</h3>
+        <p>
+            I hand-coded the site using semantic HTML, styled it with custom CSS, and used JavaScript
+            for basic interactivity. It’s responsive, lightweight, and fast—no frameworks or
+            dependencies, just clean markup.
+        </p>
+
+        <h3>Backend – Flask</h3>
+        <p>
+            I integrated Flask to serve dynamic content and route project file downloads. Flask’s
+            simplicity makes it ideal for personal sites and prototypes, and it pairs well with
+            Python-based workflows.
+        </p>
+
+        <h3>File Sharing with Azure Blob Storage</h3>
+        <p>
+            To store and serve downloadable resources (like project samples and templates), I use
+            <strong>Azure Blob Storage</strong>. Through the Azure SDK’s <code>BlobServiceClient</code>,
+            my Flask app connects to Azure and dynamically fetches files for users.
+        </p>
+        <p>
+            This keeps the site lightweight and scalable—no large files on the server, just clean blob
+            references.
+        </p>
+
+        <h2>🌍 Useful Links</h2>
+        <ul>
+            <li>🔗 <a href="https://abdulkoomson.com" target="_blank">My Website</a></li>
+            <li>
+                📁
+                <a href="https://github.com/AbdulKoomson/abdulkoomsonweb" target="_blank">Source Code on GitHub</a>
+            </li>
+            <li>👨‍💻 <a href="https://github.com/AbdulKoomson" target="_blank">My GitHub Profile</a></li>
+        </ul>
+
+        <h2>📘 Quick Primer: HTML, CSS & JS</h2>
+
+        <h3>What is HTML?</h3>
+        <p>
+            HTML (HyperText Markup Language) is the foundation of any web page. It defines the structure
+            of the content—headings, paragraphs, buttons, forms, links, etc.
+        </p>
+
+        <h3>What is CSS?</h3>
+        <p>
+            CSS (Cascading Style Sheets) controls how that content looks. It’s responsible for colors,
+            fonts, layout, and responsiveness across devices.
+        </p>
+
+        <h3>What is JavaScript?</h3>
+        <p>
+            JavaScript adds behavior. Want to show/hide something, validate a form, or update content
+            without reloading the page? JS handles that magic.
+        </p>
+
+        <h2>🚀 What’s Next?</h2>
+        <ul>
+            <li>Build an admin portal with Flask for blog publishing</li>
+            <li>Pull project metadata dynamically from Azure</li>
+            <li>Launch a public download section for open-source code</li>
+        </ul>
+
+        <h2>🧠 Final Thoughts</h2>
+        <p>
+            Don’t underestimate the power of starting with the basics. HTML, CSS, and JS laid the
+            foundation, and Flask + Azure took it further. This setup gives me full control over both
+            frontend and backend with zero dependencies on heavy CMSs.
+        </p>
+
+        <p>
+            If you're just starting your web dev journey, I highly recommend building your own portfolio
+            site from scratch. It’s the best way to truly understand how the web works.
+        </p>
+
+        <p>
+            Have questions about integrating Flask with Azure Blob or setting up your own personal site?
+            <a href="mailto:abdulkoomson@gmail.com">Reach out anytime.</a>
+        </p>
+    </article>
+</div>
+
+<!-- Modal for enlarged image -->
+<div id="imgModal" class="img-modal" onclick="closeModal(event)">
+    <span class="close">&times;</span>
+    <div class="modal-image-wrapper">
+        <img class="modal-content" id="modalImage" src="/static/pictures/ChatGPT Image Jun 25, 2025, 03_19_39 PM.png"
+            alt="Enlarged image" />
+    </div>
+</div>
