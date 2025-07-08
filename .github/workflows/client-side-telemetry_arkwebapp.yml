@@ -49,7 +49,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     
-    
+    permissions:
+      id-token: write #This is required for requesting the JWT
+      contents: read #This is required for actions/checkout
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
@@ -60,10 +63,17 @@ jobs:
         run: unzip release.zip
 
       
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_04DDF0B76FB949CF9BC478ADA38334EA }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A1B5192ABB3F467BA2528155C680805A }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6596618692294B1F8514140BE0FD5579 }}
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'arkwebapp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_23A8B0C87D0A4DFCA91ACEB4B3EFE47D }}
+          
