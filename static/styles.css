@@ -473,6 +473,46 @@ body {
   flex-direction: column;
 }
 
+.blog-photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* space between images */
+  flex-wrap: wrap;
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+.blog-photo-aboutme {
+  flex: 1 1 30%;
+  max-width: 30%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  display: block;
+  transform: scale(0.95);
+  transform-origin: center center;
+  transition: transform 0.2s;
+}
+
+.blog-photo-aboutme:hover {
+  transform: scale(1);
+}
+
+/* Responsive: Stack images vertically on mobile */
+@media screen and (max-width: 768px) {
+  .blog-photo-aboutme {
+    max-width: 90%;
+    flex: 1 1 100%;
+  }
+
+  .blog-photo-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
 @media (min-width: 768px) {
   .blog-card {
     flex-direction: row;
