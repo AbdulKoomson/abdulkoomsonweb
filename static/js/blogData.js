@@ -76,7 +76,7 @@ export const blogPosts = JSON.parse(`[
     "title": "About Me: Data Science & AI Specialist, Full-Stack Developer, Builder",
     "subtitle": "A look behind the code and into my journey as a data-driven developer",
     "content": "With a strong background in data science, AI, and web development, my journey blends deep technical skill with startup passion. Here's how I went from Civil Engineering to building intelligent systems.",
-    "image": "https://your-image-source.com/aboutme-profile-thumbnail.jpg",
+    "image": "/static/pictures/IMG_0476.jpg",
     "author": "Abdul Koomson",
     "date": "June 27, 2025",
     "tags": ["About Me", "Data Science", "AI", "Full Stack", "Founder Journey"],
