@@ -82,5 +82,17 @@ export const blogPosts = JSON.parse(`[
     "tags": ["About Me", "Data Science", "AI", "Full Stack", "Founder Journey"],
     "readMoreLink": "/aboutme",
     "altStyle": false
-  }
+  },
+  {
+  "id": 8,
+  "title": "Adding Telemetry to My Web App with Azure Application Insights",
+  "subtitle": "Tracking real user behavior before connecting my domain",
+  "content": "Before I point my domain to my live web app, I'm implementing Azure Application Insights with the JS SDK to track page views, availability, and user engagement data.",
+  "image": "/static/pictures/pexels-pixabay-276452.jpg",
+  "author": "Abdul Koomson",
+  "date": "June 28, 2025",
+  "tags": ["Azure", "Web Monitoring", "Telemetry", "Startup Dev Log"],
+  "readMoreLink": "/posts/adding-telemetry-to-my-web-app-azure-insights",
+  "altStyle": true
+}
 ]`);
