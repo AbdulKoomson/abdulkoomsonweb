@@ -1,0 +1,102 @@
+<div class="full-post">
+    <article>
+        <img src="/static/pictures/favicon.png" alt="blog photo" class="blog-photo-mainpage"
+            onclick="openModal(this)" />
+        <h1>Site Is Live on Custom Domain: www.abdulkoomson.com</h1>
+
+        <p>Big milestone today—I officially launched my website on its own custom domain: <strong><a
+                    href="https://www.abdulkoomson.com" target="_blank">www.abdulkoomson.com</a></strong>.</p>
+
+        <h2>🔁 What Changed</h2>
+        <ul>
+            <li>✅ Added a custom favicon (tab logo)</li>
+            <li>✅ Merged my <code>client-side-telemetry</code> branch into <code>main</code></li>
+            <li>✅ Upgraded my Azure App Service from the free tier to enable custom domains</li>
+            <li>✅ Connected and went live with the domain</li>
+        </ul>
+
+        <h2>💥 Challenges I Hit Along the Way</h2>
+        <p>This wasn’t a smooth push-and-go deployment. After upgrading to enable custom domains, I ran into several
+            issues—mainly around SSL and app service behavior.</p>
+
+        <h3>🔐 SSL Binding Deployment Error</h3>
+        <p>Initially, I hit a snag when trying to configure SSL for my domain. Azure threw an error:</p>
+        <blockquote>
+            “Another operation is in progress.”
+        </blockquote>
+        <p>I had to wait it out and try again later for the binding to complete correctly.</p>
+
+        <h3>🚫 Site Still Not Live?</h3>
+        <p>After resolving the SSL part, the site still wasn’t appearing. Here’s what fixed it:</p>
+        <ul>
+            <li>Reconfigured <strong>Application Settings</strong></li>
+            <li>Changed the FTP state</li>
+            <li>Temporarily disabled the <strong>HTTPS Only</strong> redirect</li>
+        </ul>
+        <p>This allowed HTTP requests to succeed, and finally made the app accessible on the domain.</p>
+
+        <h2>✅ Why Disabling HTTPS Only Might Help Temporarily:</h2>
+        <ul>
+            <li>If your SSL certificate wasn’t fully set up, HTTPS connections could fail.</li>
+            <li>Temporarily allowing HTTP lets you test that the server and app are working before HTTPS is fully
+                functional.</li>
+            <li>It can help identify if the issue is with your certificate or redirect config.</li>
+        </ul>
+
+        <h2>❌ Why It's Risky to Leave HTTP Enabled:</h2>
+        <ul>
+            <li><strong>Security Risk:</strong> HTTP sends data in plain text — passwords, cookies, etc., can be
+                intercepted.</li>
+            <li><strong>Browser Warnings:</strong> Modern browsers will flag your site as "Not Secure".</li>
+            <li><strong>SEO Penalty:</strong> Search engines prefer secure (HTTPS) sites. Google may penalize insecure
+                ones.</li>
+            <li><strong>User Trust:</strong> Users are less likely to trust or interact with an HTTP-only site.</li>
+        </ul>
+
+        <h2>✅ What You Should Do After It’s Working:</h2>
+        <p>Once you’ve confirmed your app is functional:</p>
+        <ul>
+            <li><strong>Fix SSL (HTTPS) properly:</strong>
+                <ul>
+                    <li>Ensure the certificate is valid, not expired, and installed correctly.</li>
+                    <li>Use a trusted CA like Let’s Encrypt, GoDaddy, or your cloud provider’s SSL service.</li>
+                </ul>
+            </li>
+            <li>Re-enable <strong>HTTPS Only</strong> in your app settings (Azure, Nginx, Apache, etc.).</li>
+            <li>Set up an automatic redirect from HTTP to HTTPS (most cloud platforms support this easily).</li>
+            <li>Check HSTS settings: If appropriate, configure <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security"
+                    target="_blank" rel="noopener">HSTS</a> to tell browsers to always use HTTPS.</li>
+        </ul>
+
+        <h2>📊 Telemetry Now Active</h2>
+        <p>As mentioned in prior <a href="/adding-telemetry-to-my-web-app-azure-insights">Post </a>, I’d already
+            implemented client-side telemetry using Azure Application Insights.</p>
+        <p>Now that the site is live on its real domain, I’ll be able to start collecting real-world data about page
+            views, user behavior, and performance.</p>
+
+        <h2>🎯 What’s Next</h2>
+        <ul>
+            <li>Track telemetry over the next week and refine user experience</li>
+            <li>Finish setting up my project showcase and downloads section</li>
+            <li>Start building a small admin panel for post publishing</li>
+        </ul>
+
+        <h2>💬 Final Thoughts</h2>
+        <p>Going live with your own domain feels small from the outside—but inside, it’s a big step forward. It brings
+            legitimacy to what you’re building, and creates a platform to scale from.</p>
+        <p>To anyone launching on Azure or running into similar deployment headaches—just keep going. Each tweak and fix
+            is one step closer to having your platform truly live.</p>
+
+        <p>Have deployment tips or want help connecting your custom domain in Azure? <a
+                href="mailto:abdulkoomson@gmail.com">Reach out anytime</a>.</p>
+    </article>
+</div>
+
+<!-- Modal for enlarged image -->
+<div id="imgModal" class="img-modal" onclick="closeModal(event)">
+    <span class="close">&times;</span>
+    <div class="modal-image-wrapper">
+        <img class="modal-content" id="modalImage" />
+    </div>
+</div>

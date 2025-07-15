@@ -84,15 +84,51 @@ export const blogPosts = JSON.parse(`[
     "altStyle": false
   },
   {
-  "id": 8,
-  "title": "Adding Telemetry to My Web App with Azure Application Insights",
-  "subtitle": "Tracking real user behavior before connecting my domain",
-  "content": "Before I point my domain to my live web app, I'm implementing Azure Application Insights with the JS SDK to track page views, availability, and user engagement data.",
-  "image": "/static/pictures/pexels-pixabay-276452.jpg",
-  "author": "Abdul Koomson",
-  "date": "June 28, 2025",
-  "tags": ["Azure", "Web Monitoring", "Telemetry", "Startup Dev Log"],
-  "readMoreLink": "/posts/adding-telemetry-to-my-web-app-azure-insights",
-  "altStyle": true
-}
+    "id": 8,
+    "title": "Adding Telemetry to My Web App with Azure Application Insights",
+    "subtitle": "Setting Up tracking real user behavior before connecting my domain",
+    "content": "Before I point my domain to my live web app, I'm implementing Azure Application Insights with the JS SDK to track page views, availability, and user engagement data.",
+    "image": "/static/pictures/pexels-pixabay-276452.jpg",
+    "author": "Abdul Koomson",
+    "date": "June 28, 2025",
+    "tags": ["Azure", "Web Monitoring", "Telemetry", "Startup Dev Log"],
+    "readMoreLink": "/posts/adding-telemetry-to-my-web-app-azure-insights",
+    "altStyle": true
+  },
+  {
+    "id": 9,
+    "title": "Site Is Live on Custom Domain: www.abdulkoomson.com",
+    "subtitle": "Favicon added, telemetry merged, domain connected—finally live!",
+    "content": "After merging my telemetry branch and upgrading from the free tier, I connected my custom domain and solved SSL deployment issues to get my site fully live.",
+    "image": "/static/pictures/favicon.png",
+    "author": "Abdul Koomson",
+    "date": "June 29, 2025",
+    "tags": ["Web Hosting", "Azure", "Deployment", "Startup Dev Log"],
+    "readMoreLink": "/posts/site-live-on-custom-domain-abdulkoomson",
+    "altStyle": false
+  },
+    {
+    "id": 10,
+    "title": "The First Step of My AI Image Processing Startup",
+    "subtitle": "Image uploads to Azure Blob now live—models coming soon",
+    "content": "I’ve created the frontend and backend for uploading images to Azure Blob Storage. This is the first major step toward enabling global access for my AI image processing startup.",
+    "image": "/static/pictures/Let's learn about the 1st step!.jpg",
+    "author": "Abdul Koomson",
+    "date": "June 30, 2025",
+    "tags": ["AI Startup", "Image Processing", "Azure", "Blob Storage", "Machine Learning"],
+    "readMoreLink": "/posts/first-step-ai-image-processing-startup",
+    "altStyle": true
+  },
+  {
+    "id": 11,
+    "title": "Securing Secrets in My Backend App with .env Files",
+    "subtitle": "Using environment variables to safely share code on GitHub",
+    "content": "Before uploading my backend to GitHub, I took steps to hide sensitive data like passwords and keys using environment variables and .env files. Here's how I did it and why it matters.",
+    "image": "/static/pictures/env.jpg",
+    "author": "Abdul Koomson",
+    "date": "July 1, 2025",
+    "tags": ["Environment Variables", "Security", "Python", "Startup Dev Log", "Azure"],
+    "readMoreLink": "/posts/securing-secrets-in-backend-env-dotenv",
+    "altStyle": false
+  }
 ]`);

@@ -1,0 +1,79 @@
+<div class="full-post">
+    <article>
+        <img src="/static/pictures/Let's learn about the 1st step!.jpg" alt="blog photo" class="blog-photo-mainpage"
+            onclick="openModal(this)" />
+        <h1>The First Step of My AI Image Processing Startup</h1>
+
+        <p>Every startup starts somewhere—and for an AI-driven image processing platform, the first crucial step is
+            giving users the ability to upload and access images securely from anywhere in the world.</p>
+
+        <p>That’s why I’ve built and launched the foundational infrastructure for global image upload using
+            <strong>Azure Blob Storage</strong>. My current app enables users to upload image files to the cloud via a
+            clean frontend and a secure backend API—paving the way for model inference at scale.</p>
+
+        <h2>🌐 The App Is Live</h2>
+        <p>The upload system is up and running at:</p>
+        <p>
+            👉 <a href="https://dearwebservices-hjg7d6exgmenaggw.eastus-01.azurewebsites.net/" target="_blank">
+                https://dearwebservices-hjg7d6exgmenaggw.eastus-01.azurewebsites.net/
+            </a>
+        </p>
+
+        <p>This backend connects directly to an Azure Blob container, giving me cloud-based storage that’s globally
+            accessible and ready for model integration. Uploads are fast, stable, and persistent.</p>
+
+        <h2>🧱 Why This Matters</h2>
+        <p>While it might seem simple, setting up a robust and scalable image upload flow is a foundational move for any
+            global AI image processing system. It ensures that:</p>
+        <ul>
+            <li>Images can be uploaded securely from any location</li>
+            <li>They’re stored in a format that supports batch or real-time ML processing</li>
+            <li>The frontend/backend flow is production-ready for future users</li>
+        </ul>
+
+        <h2>💻 What I Built</h2>
+        <ul>
+            <li>A web-based <strong>frontend</strong> with form controls for image uploads</li>
+            <li>A <strong>Flask backend API</strong> to handle uploads and route them to Azure Blob</li>
+            <li>Blob configuration with secure connection string, container setup, and file access rules</li>
+            <li>Testing with multiple file types and concurrent uploads</li>
+        </ul>
+
+        <h2>🧪 It’s Already Proven</h2>
+        <p>Even though I’m only posting this now, the service has been live for a few months—and it’s been running
+            flawlessly. No spam, no crash loops, no broken endpoints. It’s stable and ready for the next phase.</p>
+
+        <h2>🤖 What’s Next? Machine Learning Models</h2>
+        <p>If you’re here expecting ML output, hang tight. The models are coming. Right now, I’m focused on building the
+            infrastructure and data flow that will power those models.</p>
+        <p>Processing, prediction, and intelligent analysis all depend on clean inputs and scalable infrastructure—and
+            that’s what this milestone enables.</p>
+
+        <h2>📦 Why Azure Blob?</h2>
+        <ul>
+            <li>Global availability zones</li>
+            <li>Easy integration with Flask, FastAPI, and Azure ML</li>
+            <li>Built-in scalability and secure file access</li>
+            <li>Low cost for storage + great documentation</li>
+        </ul>
+
+        <h2>💬 Final Thoughts</h2>
+        <p>Startups aren’t just about flashy demos—they’re about building the pipes behind the scenes. This image upload
+            system is the first major piece of my AI platform, and it lays the groundwork for everything else that’s
+            coming.</p>
+
+        <p>Check out the live demo, and stay tuned for the next step: connecting the uploaded images to a live object
+            detection model. It's coming soon.</p>
+
+        <p>Have experience scaling blob storage or integrating with ML pipelines? <a
+                href="mailto:abdulkoomson@gmail.com">Let’s chat.</a></p>
+    </article>
+</div>
+
+<!-- Modal for enlarged image -->
+<div id="imgModal" class="img-modal" onclick="closeModal(event)">
+    <span class="close">&times;</span>
+    <div class="modal-image-wrapper">
+        <img class="modal-content" id="modalImage" />
+    </div>
+</div>

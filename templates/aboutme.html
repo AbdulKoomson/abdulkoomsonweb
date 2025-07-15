@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Designing My Startup Logo with AI and Online Tools</title>
+    <title>About Me</title>
     <meta name="description"
         content="A look into how I explored logo ideas for my startup using tools like ChatGPT, Design.com, Canva, and more." />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/@panzoom/panzoom@9.4.0/dist/panzoom.min.js"></script>
+    <script type="module" src="/static/js/modalViewer.js"></script>
+
 </head>
 
 <body>
@@ -125,7 +128,7 @@
         <header class="page-header">
             <nav>
                 <a href="#0" aria-label="Professional photo" class="logo">
-                    <img src="/static/pictures/abdulkoomson.jpg" alt="Abdul Koomson - Professional Photo"
+                    <img src="/static/pictures/IMG_1261.jpg" alt="Abdul Koomson - Professional Photo"
                         class="profile-photo" />
                 </a>
                 <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
@@ -213,9 +216,12 @@
             <div class="full-post">
                 <article>
                     <div class="blog-photo-container">
-                        <img src="/static/pictures/IMG_0476.jpg" alt="blog photo 1" class="blog-photo-aboutme" onclick="openModal(this)" />
-                        <img src="/static/pictures/IMG_2019.jpg" alt="blog photo 2" class="blog-photo-aboutme" onclick="openModal(this)" />
-                        <img src="/static/pictures/IMG_2067.jpg" alt="blog photo 3" class="blog-photo-aboutme" onclick="openModal(this)" />
+                        <img src="/static/pictures/IMG_0476.jpg" alt="blog photo 1" class="blog-photo-aboutme"
+                            onclick="openModal(this)" />
+                        <img src="/static/pictures/IMG_2019.jpg" alt="blog photo 2" class="blog-photo-aboutme"
+                            onclick="openModal(this)" />
+                        <img src="/static/pictures/IMG_2067.jpg" alt="blog photo 3" class="blog-photo-aboutme"
+                            onclick="openModal(this)" />
                     </div>
                     <h1>About Me: Data Science & AI Specialist, Data Engineer, Full-Stack Developer, Builder</h1>
 
@@ -294,14 +300,13 @@
                 </article>
             </div>
 
-            <!-- Modal for enlarged image
+            <!-- Modal for enlarged image -->
             <div id="imgModal" class="img-modal" onclick="closeModal(event)">
                 <span class="close">&times;</span>
                 <div class="modal-image-wrapper">
-                    <img class="modal-content" id="modalImage"
-                        src="/static/pictures/ChatGPT Image Jun 30, 2025, 10_03_26 AM.png" alt="Enlarged image" />
+                    <img class="modal-content" id="modalImage" />
                 </div>
-            </div> -->
+            </div>
 
             <!-- ============================================ -->
             <!--                   Footer                     -->

@@ -1,0 +1,104 @@
+<div class="full-post">
+    <article>
+        <img src="/static/pictures/pexels-pixabay-276452.jpg" alt="blog photo" class="blog-photo-mainpage"
+            onclick="openModal(this)" />
+        <h1>Adding Telemetry to My Web App with Azure Application Insights</h1>
+
+        <p>Before I point my domain <strong>abdulkoomson.com</strong> to my current live site, which is hosted at <a
+                href="https://abdulkoomson.azurewebsites.net" target="_blank">abdulkoomson.azurewebsites.net</a> (on
+            Azure’s free tier), I want to understand how users interact with my site.</p>
+
+        <p>That means adding telemetry—specifically, tracking how visitors navigate, what pages they visit, and how long
+            they stay. To do that, I integrated <strong>Azure Monitor Application Insights</strong> using the JavaScript
+            SDK for real user monitoring.</p>
+
+        <h2>🔍 What I Want to Measure</h2>
+        <ul>
+            <li>Page views</li>
+            <li>User navigation paths</li>
+            <li>Session duration and bounce rates</li>
+            <li>Application availability and response times</li>
+        </ul>
+
+        <p>While Azure Monitor provides full-stack observability, I’m primarily focused right now on the
+            <strong>frontend telemetry</strong>—especially page views and user engagement before I officially launch
+            with my domain.
+        </p>
+
+        <h2>🛠️ Implementation: JavaScript SDK</h2>
+        <p>To enable real user monitoring, I added the <strong>Azure Application Insights JavaScript SDK</strong> to my
+            site. This lets me capture telemetry directly from the client side without needing any backend dependencies.
+        </p>
+
+        <p>Here's the basic code snippet I added to my main HTML file:</p>
+
+        <pre><code class="language-js">
+&lt;script type="text/javascript"&gt;
+  var appInsights = window.appInsights || function (config) {
+      function r(config) {
+          t[config] = function () {
+              var i = arguments;
+              t.queue.push(function () {
+                  t[config].apply(t, i);
+              });
+          };
+      }
+      var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f;
+      s.src = config.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js";
+      u.getElementsByTagName(o)[0].parentNode.appendChild(s);
+      t.cookie = u.cookie;
+      t.queue = [];
+      i = ["trackPageView", "trackEvent", "trackException", "trackMetric", "trackDependencyData", "trackTrace", "setAuthenticatedUserContext", "clearAuthenticatedUserContext", "flush"];
+      for (f = 0; f &lt; i.length; f++) r(i[f]);
+      return t;
+  }({
+      instrumentationKey: "YOUR_INSTRUMENTATION_KEY"
+  });
+
+  window.appInsights = appInsights;
+  appInsights.trackPageView();
+&lt;/script&gt;
+</code></pre>
+
+        <p>You can generate this snippet directly from Azure Portal when setting up Application Insights for your web
+            app.</p>
+
+        <h2>📊 Benefits of App Insights</h2>
+        <p>Here’s what I like about Application Insights so far:</p>
+        <ul>
+            <li>Works with static and dynamic sites (including Flask)</li>
+            <li>Tracks page views out of the box</li>
+            <li>Collects telemetry like response time, failed requests, and JS errors</li>
+            <li>Easy integration with Azure Dashboards and Power BI</li>
+            <li>Customizable events for advanced use cases</li>
+        </ul>
+
+        <h2>🔒 Privacy & Lightweight Loading</h2>
+        <p>I made sure telemetry collection complies with basic privacy considerations—nothing invasive or PII-based.
+            You can control what data is captured and anonymize IPs if needed.</p>
+
+        <h2>📈 Next Steps</h2>
+        <ul>
+            <li>Review metrics on user engagement weekly</li>
+            <li>Map user flows to see how people navigate between blog posts</li>
+            <li>Use data to improve layout, navigation, and content organization</li>
+            <li>Upgrade my hosting plan and connect my domain: <strong>abdulkoomson.com</strong></li>
+        </ul>
+
+        <h2>💬 Final Thoughts</h2>
+        <p>Telemetry is like a feedback loop for your website—it tells you what’s working, what’s not, and what users
+            actually care about. With Azure Application Insights in place, I now have a lens into how people move
+            through my content before I make anything permanent.</p>
+
+        <p>Got tips on improving user analytics or want help setting up Application Insights? <a
+                href="mailto:abdulkoomson@gmail.com">Let’s chat</a>.</p>
+    </article>
+</div>
+
+<!-- Modal for enlarged image -->
+<div id="imgModal" class="img-modal" onclick="closeModal(event)">
+    <span class="close">&times;</span>
+    <div class="modal-image-wrapper">
+        <img class="modal-content" id="modalImage" />
+    </div>
+</div>
