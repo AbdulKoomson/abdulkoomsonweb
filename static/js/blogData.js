@@ -130,5 +130,17 @@ export const blogPosts = JSON.parse(`[
     "tags": ["Environment Variables", "Security", "Python", "Startup Dev Log", "Azure"],
     "readMoreLink": "/posts/securing-secrets-in-backend-env-dotenv",
     "altStyle": false
-  }
+  },
+  {
+  "id": 12,
+  "title": "Using Azure App Service Application Settings for Connection Strings",
+  "subtitle": "Server-side secret injection without .env files",
+  "content": "Instead of storing connection strings in a .env file, I’ve started using Azure App Service → Configuration → Application settings to securely inject secrets directly into my Flask app at runtime.",
+  "image": "/static/pictures/ChatGPT Image Jul 30, 2025, 12_23_44 AM.png",
+  "author": "Abdul Koomson",
+  "date": "July 2, 2025",
+  "tags": ["Azure", "Environment Variables", "App Configuration", "Flask", "Startup Dev Log"],
+  "readMoreLink": "/posts/azure-app-service-config-secrets-flask",
+  "altStyle": true
+}
 ]`);

@@ -4,14 +4,12 @@ import os, re, json
 import logging
 from azure.monitor.opentelemetry import configure_azure_monitor
 
-# Configure Azure Monitor
-os.environ["APPLICATIONINSIGHTS_CONNECTION_STRING"] = "InstrumentationKey=04920939-20c6-44d9-81eb-d0f57ae83b67;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=346dc131-0bb2-4309-bc87-2f885d5085bb"
 
 # Set up telemetry collection
-configure_azure_monitor(logger_name="akweb")
+configure_azure_monitor(logger_name="arkwebapp")
 
 # Set up logger
-logger = logging.getLogger("akweb")
+logger = logging.getLogger("arkwebapp")
 logger.setLevel(logging.INFO)
 
 # Create Flask app
@@ -20,7 +18,8 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 @app.route('/')
 def home():
     logger.info("Visited home page")
-    return render_template('index.html')
+    ai_connection_string = os.getenv("APPLICATIONINSIGHTS_CONNECTION_STRING")
+    return render_template("index.html", ai_connection_string=ai_connection_string)
 
 @app.route('/comments')
 def comments():

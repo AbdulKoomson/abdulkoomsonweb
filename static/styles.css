@@ -480,15 +480,15 @@ body {
   gap: 5px;
   /* space between images */
   flex-wrap: wrap;
-  margin: 20px auto;
+  margin: 5px auto;
   max-width: 1000px;
 }
 
 .blog-photo-aboutme {
   flex: 1 1 30%;
-  max-width: 30%;
+  max-width: 25%;
   height: auto;
-  max-height: 300px;
+  max-height: 325px;
   object-fit: contain;
   display: block;
   transform: scale(0.95);
