@@ -1,0 +1,9 @@
+.env
+.env.analytics.dev
+.env.appl.production
+.env.development
+.env.example
+.env.production
+.envstaging
+.env.test
+.env.testing

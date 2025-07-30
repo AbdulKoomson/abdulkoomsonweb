@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create standard environment files
-touch .env .env.development .env.test .env.testing .env.staging .env.production .env.example
+touch .env .env.development .env.test .env.testing .env.staging .env.production
 
 # Create app-specific environment files
 touch .env.app1.production .env.analytics.dev
