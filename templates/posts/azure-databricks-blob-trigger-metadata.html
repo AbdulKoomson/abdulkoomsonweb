@@ -1,0 +1,131 @@
+<div class="full-post">
+    <article>
+        <div class="blog-photo-container">
+            <img src="/static/pictures/ChatGPT Image Aug 11, 2025, 11_25_05 AM.png" alt="metadata_processing blog photo"
+                class="blog-photo-aboutme" onclick="openModal(this)" />
+            <img src="/static/pictures/Flowchart.png" alt="Key_vault blog photo" class="blog-photo-aboutme"
+                onclick="openModal(this)" />
+        </div>
+        <h1>Automating Metadata Processing with Azure Data Factory & Databricks</h1>
+
+        <p>In my <a href="/first-step-ai-image-processing-startup">previous post</a>, I shared how the first step in my
+            AI image processing startup was to enable secure, global uploads to Azure Blob Storage.</p>
+
+        <p>Now, we’re moving from storage to intelligence. Using <strong>Azure Data Factory</strong>, I’ve set up a
+            <strong>BlobEventsTrigger</strong> that listens for new uploads in the <code>/blobs/input/</code> path, and
+            instantly triggers a <strong>Databricks notebook workflow</strong> to process metadata.</p>
+
+        <h2>📜 The Automation Flow</h2>
+
+        <ol>
+            <li>User uploads an image via our web app.</li>
+            <li>Blob Storage logs the event.</li>
+            <li>Azure Data Factory pipeline detects the event.</li>
+            <li>ADF triggers a Databricks notebook sequence.</li>
+            <li>Databricks extracts and saves metadata for the image.</li>
+        </ol>
+
+        <h2>🛠 ARM Template for the Pipeline</h2>
+
+        <pre><code class="language-json">
+{
+  "name": "metapipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "metaNotebook",
+        "type": "DatabricksNotebook",
+        "typeProperties": {
+          "notebookPath": "/meta/Main_Metadata_Processing"
+        },
+        "linkedServiceName": {
+          "referenceName": "AzureDatabricksLS",
+          "type": "LinkedServiceReference"
+        }
+      }
+    ]
+  },
+  "type": "Microsoft.DataFactory/factories/pipelines"
+}
+      </code></pre>
+
+        <h2>⚡ Blob Event Trigger</h2>
+
+        <pre><code class="language-json">
+{
+  "name": "upload_event_trigger",
+  "properties": {
+    "runtimeState": "Started",
+    "pipelines": [
+      {
+        "pipelineReference": {
+          "referenceName": "metapipeline",
+          "type": "PipelineReference"
+        }
+      }
+    ],
+    "type": "BlobEventsTrigger",
+    "typeProperties": {
+      "blobPathBeginsWith": "/blobs/input/",
+      "ignoreEmptyBlobs": true,
+      "events": ["Microsoft.Storage.BlobCreated"]
+    }
+  }
+}
+      </code></pre>
+
+        <h2>🔍 What the Notebooks Do</h2>
+
+        <h3>Step 1: Download Image Data</h3>
+        <ul>
+            <li>Runs <code>Download_Image_Data</code> to fetch the latest image.</li>
+            <li>Logs the image path.</li>
+        </ul>
+
+        <h3>Step 2: Extract Metadata</h3>
+        <ul>
+            <li>Runs <code>Extract_Metadata</code> to pull EXIF and device info.</li>
+            <li>Outputs a rich JSON object with camera and image parameters.</li>
+        </ul>
+
+        <h3>Step 3: Save Metadata</h3>
+        <ul>
+            <li>Runs <code>Save_Metadata</code> to persist the extracted details.</li>
+            <li>Stores alongside the image for future ML analysis.</li>
+        </ul>
+
+        <p>You can explore the notebook scripts here: <a href="https://github.com/AbdulKoomson/picture_metadata"
+                target="_blank">GitHub repo</a>.</p>
+
+        <h2>💡 Why Metadata Matters</h2>
+
+        <p>Some might question—why bother with all this metadata now? The answer is simple: <strong>data is future
+                leverage</strong>.</p>
+
+        <p>Imagine recommending the <em>best devices</em> for image quality based on actual ML results, or suggesting
+            optimal camera settings like:</p>
+        <ul>
+            <li>Orientation</li>
+            <li>Resolution</li>
+            <li>Exposure Time</li>
+            <li>ISO Speed Ratings</li>
+            <li>Focal Length</li>
+        </ul>
+
+        <p>We could even design <strong>specialized hardware</strong> for high-accuracy AI image analysis.</p>
+
+        <h2>🚀 What’s Next</h2>
+
+        <p>All of this will run in parallel with my <strong>MLflow</strong> experiments—more on that in the next post.
+        </p>
+
+    </article>
+</div>
+
+<!-- Modal for enlarged image -->
+<div id="imgModal" class="img-modal" onclick="closeModal(event)">
+    <span class="close">&times;</span>
+    <div class="modal-image-wrapper">
+        <img class="modal-content" id="modalImage" />
+    </div>
+</div>

@@ -142,5 +142,17 @@ export const blogPosts = JSON.parse(`[
   "tags": ["Azure", "Environment Variables", "App Configuration", "Flask", "Startup Dev Log"],
   "readMoreLink": "/posts/azure-app-service-config-secrets-flask",
   "altStyle": true
+  },
+  {
+  "id": 13,
+  "title": "Automating Metadata Processing with Azure Data Factory & Databricks",
+  "subtitle": "From image upload to rich metadata in seconds",
+  "content": "Following my first AI image processing step, I’ve now automated metadata extraction with Azure Data Factory triggering a Databricks workflow on each new upload in Blob Storage—laying the groundwork for smarter recommendations and device optimizations.",
+  "image": "/static/pictures/ChatGPT Image Aug 11, 2025, 11_25_05 AM_2.png",
+  "author": "Abdul Koomson",
+  "date": "July 5, 2025",
+  "tags": ["Azure", "Databricks", "Data Factory", "AI Pipeline", "Metadata"],
+  "readMoreLink": "/posts/azure-databricks-blob-trigger-metadata",
+  "altStyle": false
 }
 ]`);
