@@ -29,23 +29,54 @@
 
         <pre><code class="language-json">
 {
-  "name": "metapipeline",
-  "properties": {
-    "activities": [
-      {
-        "name": "metaNotebook",
-        "type": "DatabricksNotebook",
-        "typeProperties": {
-          "notebookPath": "/meta/Main_Metadata_Processing"
+    "name": "metapipeline",
+    "properties": {
+        "description": "Pipeline for metadata processing using Databricks notebook",
+        "activities": [
+            {
+                "name": "metaNotebook",
+                "type": "DatabricksNotebook",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "2:00:00",
+                    "retry": 3,
+                    "retryIntervalInSeconds": 60,
+                    "secureOutput": true,
+                    "secureInput": true
+                },
+                "userProperties": [
+                    {
+                        "name": "purpose",
+                        "value": "Metadata processing and validation"
+                    }
+                ],
+                "typeProperties": {
+                    "notebookPath": "/meta/Main_Metadata_Processing",
+                    "baseParameters": {
+                        "environment": "dev"
+                    }
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureDatabricksLS",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        ],
+        "concurrency": 1,
+        "annotations": [
+            "metadata",
+            "processing",
+            "databricks"
+        ],
+        "variables": {
+            "executionStatus": {
+                "type": "String",
+                "defaultValue": "pending"
+            }
         },
-        "linkedServiceName": {
-          "referenceName": "AzureDatabricksLS",
-          "type": "LinkedServiceReference"
-        }
-      }
-    ]
-  },
-  "type": "Microsoft.DataFactory/factories/pipelines"
+        "lastPublishTime": "2025-03-11T06:24:10Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
 }
       </code></pre>
 
@@ -56,19 +87,36 @@
   "name": "upload_event_trigger",
   "properties": {
     "runtimeState": "Started",
+    "annotations": [
+      "Triggered when new files arrive in input container"
+    ],
     "pipelines": [
       {
         "pipelineReference": {
           "referenceName": "metapipeline",
           "type": "PipelineReference"
+        },
+        "parameters": {
+          "triggerTime": "@trigger().outputs.body.eventTime",
+          "fileName": "@trigger().outputs.body.fileName"
         }
       }
     ],
     "type": "BlobEventsTrigger",
     "typeProperties": {
+      "scope": "/subscriptions/mysubid/resourceGroups/pixelresourcegroup/providers/Microsoft.Storage/storageAccounts/pixelintelstorage",
       "blobPathBeginsWith": "/blobs/input/",
+      "blobPathEndsWith": ".csv",
       "ignoreEmptyBlobs": true,
-      "events": ["Microsoft.Storage.BlobCreated"]
+      "events": [
+        "Microsoft.Storage.BlobCreated"
+      ],
+      "retryPolicy": {
+        "count": 3,
+        "intervalInSeconds": 30
+      },
+      "batchSize": 10,
+      "maxConcurrency": 5
     }
   }
 }
