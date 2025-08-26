@@ -133,8 +133,3 @@ def log_event():
 def health():
     return "OK", 200
 
-# Only run with flask dev server if executed directly (for local development)
-if __name__ == '__main__':
-    # This should only be used for local development
-    # In production, use gunicorn as described in the startup command
-    app.run(debug=False, host='0.0.0.0', port=8000)
