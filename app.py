@@ -2,16 +2,30 @@ from flask import Flask, render_template, request, abort, current_app as app
 from jinja2 import TemplateNotFound
 import os, re, json
 import logging
-from azure.monitor.opentelemetry import configure_azure_monitor
 from flask_caching import Cache
-
-
-# Set up telemetry collection
-configure_azure_monitor(logger_name="arkwebapp")
 
 # Set up logger
 logger = logging.getLogger("arkwebapp")
 logger.setLevel(logging.INFO)
+
+# Telemetry is optional. This used to import azure.monitor.opentelemetry at
+# module scope and call it unconditionally, which meant the app could not start
+# anywhere without the Azure SDK installed and an Application Insights instance
+# to talk to. Off Azure there is no such instance, so the import is deferred and
+# guarded: if the connection string is absent the app simply logs to stdout,
+# which is what the container runtime collects anyway.
+_ai_connection_string = os.getenv("APPLICATIONINSIGHTS_CONNECTION_STRING")
+if _ai_connection_string:
+    try:
+        from azure.monitor.opentelemetry import configure_azure_monitor
+        configure_azure_monitor(logger_name="arkwebapp")
+        logger.info("Azure Monitor telemetry enabled")
+    except ImportError:
+        logger.warning("APPLICATIONINSIGHTS_CONNECTION_STRING is set but the "
+                       "azure-monitor-opentelemetry package is not installed")
+else:
+    logging.basicConfig(level=logging.INFO)
+    logger.info("No APPLICATIONINSIGHTS_CONNECTION_STRING; logging to stdout")
 
 # Create Flask app
 app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -94,14 +108,14 @@ def download():
             'description': 'initial demo of my website backend app',
             'assigned': 'Abdul Koomson',
             'status': 'IN PROGRESS',
-            'url': 'https://akwebsa.blob.core.windows.net/downloads/app.py'
+            'url': '/static/downloads/app.py'
         },
         {
             'name': 'ChatGPT Image Jun 30, 2025, 10_03_26 AM.png',
             'description': 'initial logo for my startup',
             'assigned': 'Abdul Koomson',
             'status': 'IN PROGRESS',
-            'url': 'https://akwebsa.blob.core.windows.net/downloads/ChatGPT%20Image%20Jun%2030,%202025,%2010_03_26%20AM.png'
+            'url': '/static/downloads/startup-logo.png'
         }
     ]
     return render_template('download.html', files=files)

@@ -1,0 +1,16 @@
+# Keep the image small and keep secrets out of the build context entirely —
+# a .env copied in and deleted later still exists in an earlier layer.
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.pyc
+.git/
+.github/
+.pytest_cache/
+*.log
+create_env_files.sh
+Dockerfile
+.dockerignore
